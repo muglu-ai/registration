@@ -14,12 +14,16 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('user_login_table', function (Blueprint $table) {
-            $table->increments('id')->primary();
-            $table->string('exhibitor_id',15)->index();
+            $table->increments('id');
+            $table->string('exhibitor_id',15);
             $table->string('login_email',250);
-            $table->foreign('login_email',250)->references('cp_email',250)->on('exhibitor_reg_table');
-            $table->string('password')->comment('Auto generate on some random pattern and a common(hardcoded) password');
+            $table->foreign('login_email',250)->references('cp_email')->on('exhibitor_reg_table');
+            $table->string('password');
             $table->foreign('exhibitor_id')->references('exhibitor_id')->on('exhibitor_reg_table');
+            $table->string('captcha',50)->nullable();
+            $table->string('status', 1)->default(('1'));
+            $table->timestamp('created_At')->nullable();
+            $table->timestamp('updated_At')->nullable();
         });
 
         Schema::enableForeignKeyConstraints();

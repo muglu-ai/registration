@@ -5,13 +5,17 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\exhibitor_reg_table;
-class ExhibitorSeeder extends Seeder
+
+class ExhibitorRegTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
+        // Example data for seeding
         $exhibitors = [
             [
                 'exhibitor_id' => 'EXH1234',
@@ -39,7 +43,7 @@ class ExhibitorSeeder extends Seeder
                 'sales_executive' => 'Jane Smith',
                 'reg_id' => 'REG987',
                 'user_type' => 'Premium',
-                'exhibiting_under' => 'Promo Company A',
+                'exhibiting_under' => 'Organization 1',
                 'reg_date' => '2024-05-14',
                 'tin_no' => 'TIN98765',
                 'currency' => 'USD',
@@ -49,7 +53,7 @@ class ExhibitorSeeder extends Seeder
                 'payment_date' => '2024-05-14',
                 'pin_no' => 'PIN123',
                 'selection_amount' => '800',
-                'promo_code' => 'PROMO123',
+                'promo_code' => 'CODE123',
                 'discount' => '200',
                 'tax_amount' => '50',
                 'processing_charge' => '20',
@@ -65,6 +69,9 @@ class ExhibitorSeeder extends Seeder
                 'pg_avr' => null,
                 'pg_ref' => null,
                 'pg_amt' => null,
+                'event_name' => 'Tech Expo',
+                'gst_state' => 'NY',
+                'event_year' => '2024',
             ],
             // Add more exhibitor data as needed
         ];

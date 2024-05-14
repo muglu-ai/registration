@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class exhibitor_reg_table extends Model
 {
-    use HasFactory;
+    protected $table = 'exhibitor_reg_table';
+
     protected $fillable = [
         'exhibitor_id',
         'org_name',
@@ -60,5 +61,12 @@ class exhibitor_reg_table extends Model
         'pg_avr',
         'pg_ref',
         'pg_amt',
-    ];
+        'event_name',
+        'gst_state',
+        'event_year',
+];
+    public function exhibitor()
+    {
+        return $this->belongsTo(promocode_table::class, 'promocode_organization', 'exhibiting_under');
+    }
 }

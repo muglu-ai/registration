@@ -14,13 +14,15 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('promocode_table', function (Blueprint $table) {
-            $table->increments('id');     
-            $table->string('promocode_organization')->index();
-            $table->string('promo_code');
+            $table->increments('id');
+            $table->string('promocode_organization')->index(); // Adding index to the column
+            $table->string('promo_code')->nullable();
             $table->string('discount')->nullable();
             $table->string('total_count')->nullable();
             $table->string('total_used')->nullable();
             $table->string('remaining')->nullable();
+            $table->timestamp('created_At')->nullable();
+            $table->timestamp('updated_At')->nullable();
         });
 
         Schema::enableForeignKeyConstraints();

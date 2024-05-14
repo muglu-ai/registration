@@ -37,11 +37,10 @@ return new class extends Migration
             $table->string('gst_number',50)->nullable();
             $table->string('gst_invoice_add',250)->nullable();
             $table->string('pan_number',50)->nullable();
-            $table->string('gst_state',50)->nullable();
             $table->string('sales_executive',250)->nullable();
             $table->string('reg_id',50)->nullable();
             $table->string('user_type',250)->nullable();
-            $table->string('exhibiting_under',250)->nullable(); 
+            $table->string('exhibiting_under',250)->nullable(); // Assuming 'promocode_organization' in 'promocode_table' is VARCHAR(255)->nullable()
             $table->string('reg_date',250)->nullable();
             $table->string('tin_no',100)->nullable();
             $table->string('currency',100)->nullable();
@@ -67,10 +66,6 @@ return new class extends Migration
             $table->text('pg_avr')->nullable();
             $table->text('pg_ref')->nullable();
             $table->text('pg_amt')->nullable();
-            $table->string('event_name', 250)->nullable();
-            $table->string('event_year', 4)->nullable();
-            $table->timestamp('created_At')->nullable();
-            $table->timestamp('updated_At')->nullable();
             $table->foreign('exhibiting_under')->references('promocode_organization')->on('promocode_table');
         });
 
