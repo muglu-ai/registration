@@ -3,6 +3,7 @@
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\DelegateController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-Route::middleware('guest')->group(function () {
+//Route::middleware('guest')->group(function () {
     Route::get('/newExhibitor', [FormController::class, 'form'])->name('exhibitor.create');
     Route::post('/newExhibitorStore', [FormController::class, 'submit'])->name('exhibitor.submit');
-}); 
+// }); 
+
+Route::get('/newdelegate', [DelegateController::class, 'show'])->name('delegate.create');
