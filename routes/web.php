@@ -30,6 +30,13 @@ require __DIR__.'/auth.php';
 //Route::middleware('guest')->group(function () {
     Route::get('/newExhibitor', [FormController::class, 'form'])->name('exhibitor.create');
     Route::post('/newExhibitorStore', [FormController::class, 'submit'])->name('exhibitor.submit');
-// }); 
+// });
 
 Route::get('/newdelegate', [DelegateController::class, 'show'])->name('delegate.create');
+
+
+
+
+//Exhibitor Portal Routes
+Route::post('/exhibitor', [App\Http\Controllers\ExhibitorController::class, 'login'])->name('exhibitor.login');
+Route::get('/exhibitor/register', [App\Http\Controllers\ExhibitorController::class, 'register'])->name('exhibitor.register');

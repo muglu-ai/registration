@@ -9,7 +9,7 @@
         </div>
 
     </div>
-
+{{--    @include('delegate.card')--}}
     <form action="{{ route('exhibitor.submit') }}" method="POST" class="" style="
         margin-top: 20px;">
         @csrf
@@ -56,10 +56,11 @@
                                     <div>
                                         <label for="delegates">Number of Delegates</label>
                                         <div class="flex items-center mt-1">
-                                            <button type="button" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-l" onclick="decreaseDelegates()">-</button>
-                                            <input type="number" name="delegates" id="delegates" class="h-10 border text-center rounded-none w-1/6 bg-gray-50" value="1" min="1">
-                                            <button type="button" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-r" onclick="increaseDelegates()">+</button>
-                                        </div>
+                                            <select name="delegates" id="delegates" class="h-10 border mt-1 rounded px-2 w-full bg-gray-50">
+                                                @for ($i = 1; $i <= $delegates; $i++)
+                                                    <option value="{{ $i }}">{{ $i }}</option>
+                                                @endfor
+                                            </select></div>
                                     </div>
                                     <div>
                                         <label>Category</label>
@@ -104,7 +105,7 @@
             <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6 mt-5">
                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
                     <div class="text-gray-600">
-                        <p class="font-medium text-lg">Personal Details</p>
+                        <p class="font-medium text-lg">Provide Organisation Information</p>
                         <p>Please fill out all the fields.</p>
                     </div>
 
