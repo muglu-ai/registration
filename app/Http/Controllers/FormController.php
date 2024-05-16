@@ -42,7 +42,6 @@ class FormController extends Controller
     {
          //generate exhibitor id here
         $exhibitor_id = 'EXH'.rand(1000,9999);
-         // Add the exhibitor_id to the request data
         $request->merge(['exhibitor_id' => $exhibitor_id]);
         Log::info($request->all());
 

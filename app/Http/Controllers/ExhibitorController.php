@@ -3,24 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ExhibitorLogin;
+use App\Models\exhibitor_reg_table;
 use Illuminate\Http\Request;
 use App\Models\Exhibitor;
+use App\Models\Country;
 
 
 class ExhibitorController extends Controller
 {
-    //
-    public function login(ExhibitorLogin $request){
-        //log $request
+    public function login(Request $request){
+        $country = Country::all();
+        return response()->json($country);
+    }
 
-        $credentials = $request->only('email', 'password');
-        return response()->json($credentials);
-
-//        if (!auth()->attempt($credentials)) {
-//            return response()->json([
-//                'message' => 'Invalid credentials'
-//            ], 401);
-//        }
+    public function register(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $exhibitor = new exhibitor_reg_table();
+        $exhibitor->exhibitor_id = $request->exhibitor_id;
+        $exhibitor->cp_name = $request->name;
+        $exhibitor->cp_email = $request->email;
+        $exhibitor->country = $request->country;
+        $exhibitor->save();
+        return response()->json($exhibitor);
     }
 
 

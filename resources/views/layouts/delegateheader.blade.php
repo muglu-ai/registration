@@ -17,4 +17,5 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ mix('resources/js/card.js') }}" defer></script>
+
 </head>

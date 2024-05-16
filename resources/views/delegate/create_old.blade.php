@@ -72,12 +72,6 @@
                                             <label for="international" class="ml-2">International</label>
                                         </div>
                                     </div>
-                                    <div style="display: none">
-                                        <label for="delegates">Enter TiE Global Membership ID</label>
-                                        <!-- Enter TiE Global Membership ID -->
-                                        <input type="text" name="tie_global_membership_id" id="tie_global_membership_id" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ old('tie_global_membership_id') }}" />
-
-                                    </div>
                                 </div>
                             </div>
 
@@ -87,6 +81,8 @@
 
 
             </div>
+
+
 
             <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6 mt-5">
                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
@@ -99,11 +95,20 @@
                         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                             <div class="md:col-span-5 mt-5">
                                 <label for="org_name">Organisation Name</label>
-                                <input type="text" name="org_name" id="org_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ old('org_name') }}" />
+                                <input type="text" name="org_name" id="org_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ old('first_name') }}" />
                             </div>
 
                         </div>
 
+{{--                        <div class="md:col-span-5 mt-5">--}}
+{{--                            <label for="email">Email Address</label>--}}
+{{--                            <input type="text" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ old('email') }}" placeholder="email@domain.com" />--}}
+{{--                        </div>--}}
+
+{{--                        <div class="md:col-span-3 mt-5">--}}
+{{--                            <label for="address">Address / Street</label>--}}
+{{--                            <input type="text" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ old('address') }}" placeholder="" />--}}
+{{--                        </div>--}}
                         <div class="md:col-span-2 mt-5">
                             <label for="country">Country / region</label>
                             <div class="h-10 bg-gray-50 flex rounded items-center mt-1">
@@ -122,12 +127,12 @@
                         </div>
 
                         <div class="md:col-span-2 mt-5">
-                            <label for="mobile">Contact Number</label>
+                            <label for="city">Contact Number</label>
 {{--                            <x-icon name="flag-country-{{ $country->countryCode }}" />--}}
 
 
 
-                            <input type="text" id="mobile_code" name="mobile" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ old('mobile') }}" placeholder="Contact Number">
+                            <input type="text" id="mobile_code" name="mobile" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ old('city') }}" placeholder="Contact Number">
                         </div>
 
 
@@ -135,7 +140,7 @@
                         <div class="md:col-span-2 mt-5">
                             <label for="state">State / province</label>
                             <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                                <input name="state" id="state" placeholder="State" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="{{old('state')}}" />
+                                <input name="state" id="state" placeholder="State" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" />
                                 <button tabindex="-1" class="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
                                     <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -152,14 +157,23 @@
 
                         <div class="md:col-span-1  mt-5">
                             <label for="zipcode">Zipcode</label>
-                            <input type="text" name="zipcode" id="zipcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" value="{{old('zipcode')}}" />
+                            <input type="text" name="zipcode" id="zipcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" value="" />
                         </div>
+                        {{-- @csrf --}}
 
                         <div class="md:col-span-1 mt-5" style="display: flex; align-items: center; gap: 10px;">
                             <label for="captcha">Captcha</label>
                             <input type="text" name="captcha" id="captcha" class="transition-all flex items-center h-10 border mt-1 rounded px-4 bg-gray-50" placeholder="">
                             <img src="{{ captcha_src('default') }}" alt="captcha">
                         </div>
+
+
+                        {{--                        <div class="md:col-span-5  mt-5">--}}
+{{--                            <div class="inline-flex items-center">--}}
+{{--                                <input type="checkbox" name="billing_same" id="billing_same" class="form-checkbox" />--}}
+{{--                                <label for="billing_same" class="ml-2">My billing address is different than above.</label>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="md:col-span-5 text-right  mt-5">
                             <div class="inline-flex items-end">
                                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
@@ -171,25 +185,15 @@
             </div>
 
         </div>
-
-    </form>
+</form>
 </div>
-
 <script>
-    //if Organisation Type is TiE Global then show the Tie Global Membership ID
-    document.getElementById('organisation_type').addEventListener('change', function() {
-        let org_type = document.getElementById('organisation_type').value;
-        let tieGlobalMembershipId = document.getElementById('tie_global_membership_id');
-        if (org_type === 'TiE Global') {
-            tieGlobalMembershipId.value = '';
-            tieGlobalMembershipId.parentElement.style.display = 'block';
-        } else {
-            //insert into input as N/A
-            tieGlobalMembershipId.value = 'N/A';
-            tieGlobalMembershipId.parentElement.style.display = 'none';
-        }
+    let input = document.querySelector("#mobile_code");
+    window.intlTelInput(input, {
+        initialCountry: "in",
+        separateDialCode: true,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
     });
-
 
 
         function decreaseDelegates() {

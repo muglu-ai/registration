@@ -18,7 +18,7 @@ class delegate_registration extends Model
         'delegates_count',
         'nationality',
         'student',
-        'studentid', 
+        'studentid',
         'organization_name',
         'address1',
         'address2',
@@ -30,7 +30,6 @@ class delegate_registration extends Model
         'gst_number',
         'gst_invoice_add',
         'pan_number',
-
         'del1_name',
         'del1_email',
         'del1_designation',
@@ -105,7 +104,10 @@ class delegate_registration extends Model
         'assoc_name',
         'event_name',
         'event_year',
-        'token',
+        '_token',
+        'captcha',
+        'tie_global_membership_id',
+
     ];
-    
+
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\DelegateController;
 
+use http\Client\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,9 +35,12 @@ require __DIR__.'/auth.php';
 
 Route::get('/newdelegate', [DelegateController::class, 'show'])->name('delegate.create');
 
+//Delegate Registration
+Route::post('/newdelegate2', [DelegateController::class, 'submit'])->name('delegate.submit');
 
 
 
 //Exhibitor Portal Routes
-Route::post('/exhibitor', [App\Http\Controllers\ExhibitorController::class, 'login'])->name('exhibitor.login');
-Route::get('/exhibitor/register', [App\Http\Controllers\ExhibitorController::class, 'register'])->name('exhibitor.register');
+Route::get('/exhibitor', [App\Http\Controllers\ExhibitorController::class, 'login'])->name('exhibitor.login');
+Route::post('/exhibitor/register', [App\Http\Controllers\ExhibitorController::class, 'register'])->name('exhibitor.register');
+
