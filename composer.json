@@ -12,7 +12,8 @@
         "monarobase/country-list": "^3.5",
         "outhebox/blade-flags": "^1.5",
         "stidges/laravel-country-flags": "^3.0",
-        "ext-http": "*"
+        "ext-http": "*",
+        "ext-curl": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

@@ -78,7 +78,22 @@
                                         <input type="text" name="tie_global_membership_id" id="tie_global_membership_id" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{ old('tie_global_membership_id') }}" />
 
                                     </div>
+
                                 </div>
+                                @if (session('zohoApiIntegrationResult'))
+                                    @php
+                                        $response = session('zohoApiIntegrationResult');
+                                        $id = $response['0'];
+                                        $chapter_name = $response[1];
+                                        $membershipType = $response[2];
+                                    @endphp
+                                <br>
+                                <br>
+                                    <div class="bg-white p-6 rounded shadow-md w-full">                                            <p class="text-gray-700 font-semibold">Membership ID: <span class="text-black">{{ $id }}</span></p>
+                                        <p class="text-gray-700 font-semibold mt-2">Chapter Name: <span class="text-black">{{ $chapter_name }}</span></p>
+                                        <p class="text-gray-700 font-semibold mt-2">Membership Type: <span class="text-black">{{ $membershipType }}</span></p>
+                                    </div>
+                                @endif
                             </div>
 
                         </div>
@@ -87,7 +102,7 @@
 
 
             </div>
-
+<!--
             <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6 mt-5">
                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
                     <div class="text-gray-600">
@@ -160,15 +175,17 @@
                             <input type="text" name="captcha" id="captcha" class="transition-all flex items-center h-10 border mt-1 rounded px-4 bg-gray-50" placeholder="">
                             <img src="{{ captcha_src('default') }}" alt="captcha">
                         </div>
+                        -->
                         <div class="md:col-span-5 text-right  mt-5">
                             <div class="inline-flex items-end">
                                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                             </div>
                         </div>
 
-                    </div>
-                </div>
-            </div>
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
 
         </div>
 

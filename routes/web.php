@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\DelegateController;
 
+use App\Http\Controllers\ZohoApi;
 use http\Client\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,13 @@ Route::get('/newdelegate', [DelegateController::class, 'show'])->name('delegate.
 
 //Delegate Registration
 Route::post('/newdelegate2', [DelegateController::class, 'submit'])->name('delegate.submit');
+Route::get('/newdelegate2', [DelegateController::class, 'show'])->name('delegate.create');
+
+Route::get('/delegate', [DelegateController::class, 'show'])->name('delegate.login');
+
+//Zoho API
+Route::get('/zoho', [ZohoApi::class, 'zohoApiData'])->name('zoho.data');
+Route::get('/zoho/{membershipId}', [ZohoApi::class, 'searchByMembershipId']);
 
 
 
