@@ -15,6 +15,8 @@ Schema::create('countries', function (Blueprint $table) {
 $table->id();
 $table->string('name');
 $table->string('code')->unique();
+
+
 $table->timestamps();
 });
 }

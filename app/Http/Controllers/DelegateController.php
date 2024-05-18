@@ -182,7 +182,7 @@ class DelegateController extends Controller
         $zoho = new ZohoApi();
         $response = $zoho->searchByMembershipId($id);
 
-        //Log::info(print_r($response, true));
+        Log::info(print_r($response, true));
         $chapter_name = $response['data'][0]['Chapter_Name']['Chapter_Name'];
 
      //   $chapter_name = $response['Chapter_Name'][0]['Chapter_Name'];
