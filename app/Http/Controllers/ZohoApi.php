@@ -42,6 +42,7 @@ class ZohoApi extends Controller
         ]);
 
         $responseBody = json_decode($response->getBody(), true);
+        Log::info('Response Body: ' . json_encode($responseBody));
 
         // Calculate expiration time (1 hour from now)
         $expires_at = Carbon::now()->addHour();
