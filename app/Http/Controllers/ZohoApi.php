@@ -21,6 +21,9 @@ class ZohoApi extends Controller
         if (!$token || Carbon::now()->greaterThanOrEqualTo($token->expires_at)) {
             return $this->renewZohoAccessToken();
         }
+        //checking if token is expired or not
+        Log::info('Token Expires At: ' . $token->expires_at);
+        Log::info('Access Token: ' . $token->access_token);
 
         return $token->access_token;
     }
@@ -29,6 +32,8 @@ class ZohoApi extends Controller
     {
         $client_id = env('ZOHO_CLIENT_ID');
         $client_secret = env('ZOHO_CLIENT_SECRET');
+
+        Log::info("renewing accesstoken");
 
         $client = new Client();
 
