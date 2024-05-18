@@ -38,7 +38,7 @@ Route::get('/newdelegate', [DelegateController::class, 'show'])->name('delegate.
 
 //Delegate Registration
 Route::post('/newdelegate2', [DelegateController::class, 'submit'])->name('delegate.submit');
-Route::get('/newdelegate3', [DelegateController::class, 'show'])->name('delegate.create');
+Route::get('/newdelegate3', [DelegateController::class, 'show'])->name('delegate.create2');
 
 Route::get('/delegate', [DelegateController::class, 'show'])->name('delegate.login');
 
